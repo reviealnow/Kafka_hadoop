@@ -1,21 +1,20 @@
-# Kafka_hadoop
-The trial of AWS tryout
 competition-kafka-hadoop-pipeline/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml
 ├── k8s/
 │   ├── kafka-deployment.yaml
+│   ├── kafka-service.yaml
 │   ├── zookeeper-deployment.yaml
-│   └── producer-job.yaml
+│   ├── zookeeper-service.yaml
+│   ├── producer-job.yaml
+│   ├── mirror-deployment.yaml
+│   └── mirror-configmap.yaml
 ├── docker/
 │   └── producer.py
 ├── emr/
 │   ├── bootstrap.sh
 │   └── create-cluster.sh
-├── mirrormaker/
-│   ├── mirrormaker2.properties
-│   └── mirror-launch.sh
 ├── spark/
 │   └── kafka_to_hadoop.py
 ├── terraform/
@@ -26,23 +25,29 @@ competition-kafka-hadoop-pipeline/
 # ► .github/workflows/deploy.yml
 # GitHub Actions CI/CD pipeline
 
+# ► k8s/zookeeper-deployment.yaml
+# Kubernetes manifest for deploying Zookeeper
+
+# ► k8s/zookeeper-service.yaml
+# Zookeeper service definition
+
 # ► k8s/kafka-deployment.yaml
 # Kubernetes manifest for deploying Apache Kafka
 
-# ► k8s/zookeeper-deployment.yaml
-# Kubernetes manifest for deploying Zookeeper
+# ► k8s/kafka-service.yaml
+# Kafka service definition
 
 # ► k8s/producer-job.yaml
 # Kubernetes Job for running Kafka Producer
 
+# ► k8s/mirror-deployment.yaml
+# MirrorMaker 2 deployment on Kubernetes
+
+# ► k8s/mirror-configmap.yaml
+# MirrorMaker 2 configuration as ConfigMap
+
 # ► docker/producer.py
 # Sends JSON messages to local Kafka topic
-
-# ► mirrormaker/mirrormaker2.properties
-# Kafka MirrorMaker2 config for syncing local to AWS MSK
-
-# ► mirrormaker/mirror-launch.sh
-# Bash script to launch MirrorMaker
 
 # ► emr/bootstrap.sh
 # Bootstrap for installing python libs on EMR
