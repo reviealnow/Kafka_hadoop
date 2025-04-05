@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafka-producer-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: producer
+        image: python:3.9
+        command: ["python", "/app/producer.py"]
+        volumeMounts:
+        - name: producer-code
+          mountPath: /app
+      restartPolicy: Never
+      volumes:
+      - name: producer-code
+        configMap:
+          name: producer-script
+  backoffLimit: 4
